@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Fond sombre arrondi -->
+  <rect width="100" height="100" rx="24" fill="#0f0f13" />
+  
+  <!-- Forme abstraite Dashboard (Grille / Cartes stylisées avec gradient) -->
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Layout de cartes Dashboard minimaliste -->
+  <rect x="20" y="20" width="26" height="26" rx="6" fill="url(#grad)" />
+  <rect x="54" y="20" width="26" height="60" rx="6" fill="#27272a" stroke="url(#grad)" stroke-width="2" />
+  <rect x="20" y="54" width="26" height="26" rx="6" fill="#27272a" />
+</svg>
