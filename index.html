@@ -1,118 +1,58 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="icon" type="image/svg+xml" href="Dash-logo.svg">
 </head>
 
 <body>
-    <button id="focus-btn">Focus Mode</button>
+    <header>
+        <h1 class="title">Dashboard</h1>
+        <button class="focus">Focus Mode</button>
+    </header>
+    <main class="Dash">
+        <h2 class="clock">01:22</h2>
 
-    <button id="music-toggle-btn" class="nav-btn">Musique</button>
-
-    <div id="music-panel" class="side-panel">
-        <div class="panel-header">
-            <h3>Lecteur Musique</h3>
-            <button class="close-panel-btn" id="close-music-btn">✕</button>
-        </div>
-
-        <div id="input-area" class="panel-section">
-            <p>Colle un lien YouTube ou Spotify :</p>
-            <input type="text" id="media-link" placeholder="Lien YouTube / Spotify..." />
-            <button id="load-media">Lancer & Enregistrer</button>
-        </div>
-
-        <div id="controls-area" class="panel-section" style="display: none;">
-            <div class="album-art-container">
-                <img id="album-cover" src="" alt="Album Cover" />
+        <label for="search-engine">Choisir un moteur de recherche</label>
+        <select name="Search" id="search-engine">
+            <option value="https://www.google.com/">Google</option>
+            <option value="https://duckduckgo.com/">DuckDuckGo</option>
+            <option value="https://www.ecosia.org/">Ecosia</option>
+        </select>
+        <label for="search-bar">Rechercher</label>
+        <input type="text" id="search-bar">
+        <section class="cards">
+            <div class="card1">
+                <h3>Dev link</h3>
+                <button class="add">Add link</button>
             </div>
-
-            <div id="embed-box" style="display: none;"></div>
-
-            <div class="player-controls">
-                <button onclick="prev()">⏮</button>
-                <button id="play-pause-btn" onclick="togglePlay()">▶</button>
-                <button onclick="next()">⏭</button>
+            <div class="card2">
+                <h3>Work link</h3>
+                <button class="add">Add link</button>
             </div>
-
-            <button id="change-playlist-btn" onclick="resetPlayer()">Changer de playlist</button>
+            <div class="card3">
+                <h3>Free-time link</h3>
+                <button class="add">Add link</button>
+            </div>
+            <div class="card4">
+                <h3>idk link</h3>
+                <button class="add">Add link</button>
+            </div>
+        </section>
+        <button class="bg-add">Import a Background</button>
+        <button class="bg-remove">Remove Background</button>
+    </main>
+    <main class="keep">
+        <button class="add">Add Note</button>
+        <div class="note">
+            <h1 class="title" contenteditable="true"></h1>
+            <p class="contenu" contenteditable="true"></p>
+            <button class="end">End</button>
+            <button class="delete">Delete</button>
         </div>
-    </div>
-
-    <div class="dashboard">
-        <h1 class="clock">11:31 PM</h1>
-
-        <form class="search" id="search-form">
-            <select id="search-engine" class="engine-select">
-                <option value="https://www.ecosia.org/search?q=">Ecosia</option>
-                <option value="https://www.google.com/search?q=" selected>Google</option>
-                <option value="https://duckduckgo.com/?q=">DuckDuckGo</option>
-                <option value="https://www.bing.com/search?q=">Bing</option>
-                <option value="https://search.brave.com/search?q=">Brave</option>
-            </select>
-            <input type="search" id="search-input" name="q" placeholder="Make your search" required>
-        </form>
-
-        <div class="grid">
-            <div class="card card1">
-                <h2 contenteditable="true" id="cat-title-1">Dev</h2>
-                <div class="links-list" id="links-1"></div>
-                <button class="add-link-btn" onclick="addLink(1)">+ Add Link</button>
-                <div class="card-image"><img src="assets/img/Monster.png" alt="Dev"></div>
-            </div>
-            <div class="card card2">
-                <h2 contenteditable="true" id="cat-title-2">Game</h2>
-                <div class="links-list" id="links-2"></div>
-                <button class="add-link-btn" onclick="addLink(2)">+ Add Link</button>
-                <div class="card-image"><img src="assets/img/Kuromi.png" alt="Game"></div>
-            </div>
-            <div class="card card3">
-                <h2 contenteditable="true" id="cat-title-3">Study</h2>
-                <div class="links-list" id="links-3"></div>
-                <button class="add-link-btn" onclick="addLink(3)">+ Add Link</button>
-                <div class="card-image"><img src="assets/img/LUKA.png" alt="Study"></div>
-            </div>
-            <div class="card card4">
-                <h2 contenteditable="true" id="cat-title-4">Divertissement</h2>
-                <div class="links-list" id="links-4"></div>
-                <button class="add-link-btn" onclick="addLink(4)">+ Add Link</button>
-                <div class="card-image"><img src="assets/img/OSU.png" alt="Divertissement"></div>
-            </div>
-        </div>
-
-        <div class="osu-bottom-card">
-            <h2>Pomodoro Timer</h2>
-            <div id="timer-display">25:00</div>
-            <div class="timer-controls">
-                <button id="start-btn">Start</button>
-                <button id="reset-btn">Reset</button>
-            </div>
-        </div>
-
-        <div class="bg-controls">
-            <label for="bg-upload" class="upload-btn">Changer le fond</label>
-            <input type="file" id="bg-upload" accept="image/*" style="display: none;">
-            <button id="remove-bg-btn" class="upload-btn delete-bg">Retirer le fond</button>
-        </div>
-
-        <div id="controls-area" style="display: none;">
-            <button onclick="prev()">⏮</button>
-            <button id="play-pause-btn" onclick="togglePlay()">⏸</button>
-            <button onclick="next()">⏭</button>
-            <button onclick="repeat()">⟳</button>
-            <button onclick="resetPlayer()">✕</button>
-        </div>
-
-        <div id="embed-box" style="display: none;"></div>
-    </div>
-    </div>
-
-    <script src="script.js"></script>
+    </main>
 </body>
 
 </html>
