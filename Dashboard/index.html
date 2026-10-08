@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <button id="focus-btn">Focus Mode</button>
+
+    <main class="dashboard">
+        <h2 class="clock">00:00</h2>
+
+        <div class="osu-bottom-card">
+            <div id="timer-display">25:00</div>
+            <div class="timer-controls">
+                <button id="start-btn">Start</button>
+                <button id="reset-btn">Reset</button>
+            </div>
+        </div>
+
+        <form id="search-form" class="search" style="margin-top: 30px; margin-bottom: 30px;">
+            <select id="search-engine" class="engine-select">
+                <option value="https://www.google.com/search?q=">Google</option>
+                <option value="https://duckduckgo.com/?q=">DuckDuckGo</option>
+                <option value="https://www.ecosia.org/search?q=">Ecosia</option>
+            </select>
+            <input type="text" id="search-input" placeholder="Rechercher..." required>
+        </form>
+
+        <section class="grid">
+            <div class="card card1">
+                <h2 id="cat-title-1" contenteditable="true">Dev link</h2>
+                <div id="links-1" class="links-list"></div>
+                <button class="add-link-btn" onclick="addLink(1)">+ Add link</button>
+            </div>
+            <div class="card card2">
+                <h2 id="cat-title-2" contenteditable="true">Work link</h2>
+                <div id="links-2" class="links-list"></div>
+                <button class="add-link-btn" onclick="addLink(2)">+ Add link</button>
+            </div>
+            <div class="card card3">
+                <h2 id="cat-title-3" contenteditable="true">Free-time link</h2>
+                <div id="links-3" class="links-list"></div>
+                <button class="add-link-btn" onclick="addLink(3)">+ Add link</button>
+            </div>
+            <div class="card card4">
+                <h2 id="cat-title-4" contenteditable="true">idk link</h2>
+                <div id="links-4" class="links-list"></div>
+                <button class="add-link-btn" onclick="addLink(4)">+ Add link</button>
+            </div>
+        </section>
+
+        <div class="bg-controls">
+            <label class="upload-btn">
+                Import a Background
+                <input type="file" id="bg-upload" accept="image/*" style="display: none;">
+            </label>
+            <button id="remove-bg-btn" class="upload-btn delete-bg">Remove Background</button>
+        </div>
+    </main>
+
+    <button id="music-toggle-btn">🎵 Music</button>
+
+    <aside id="side-panel" class="side-panel">
+        <div class="panel-header">
+            <h3 id="side-panel-title" style="margin: 0; color: #fff;">Lecteur Média</h3>
+            <button id="close-music-btn" class="close-panel-btn">✕</button>
+        </div>
+        <p id="side-panel-text" style="color: #ff4757; font-size: 0.8rem;"></p>
+
+        <div class="album-art-container" id="album-container" style="display: none;">
+            <img id="album-cover" src="" alt="Album Cover">
+        </div>
+
+        <div id="input-area">
+            <p>Ajouter une playlist YouTube ou Spotify :</p>
+            <input type="text" id="media-link" placeholder="Lien YT ou Spotify...">
+            <button id="load-media">Charger</button>
+        </div>
+
+        <div id="controls-area" style="display: none; justify-content: space-around;">
+            <button onclick="prev()">⏮</button>
+            <button id="play-pause-btn" onclick="togglePlay()">⏸</button>
+            <button onclick="next()">⏭</button>
+            <button onclick="resetPlayer()">⏏</button>
+        </div>
+
+        <div id="embed-box" style="display: none;"></div>
+    </aside>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
